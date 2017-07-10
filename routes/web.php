@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', ['as'=>'home',function () {
-    return view('welcome');
-}]);
+//Route::get('/', ['as'=>'home','middleware'=>'auth', 'uses'=>'Admin\IndexController@show']);
+
+Route::get('/', ['as'=>'home', 'uses'=>'Admin\IndexController@show']);
+
+
+
+
 
 
 //----------- lesson 7 ---------
@@ -116,7 +120,7 @@ Route::get('/', ['as'=>'home',function () {
 
 //Route::get('/pages', 'FirstController@getPages');
 
-Route::get('/articles',    ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
+//Route::get('/articles',    ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
 
 //Route::get('/article/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
 
@@ -131,8 +135,15 @@ Route::get('/articles',    ['uses'=>'Admin\Core@getArticles', 'as'=>'articles'])
 
 //----------- lesson 10 --------
 
-//Route::get('/article/{page}', ['users'=>'Admin\Core@getArticle', 'as'=>'article', 'middleware'=>'mymiddle']);
 
 
-//Route::get('/article2/{page}', ['users'=>'Admin\Core@getArticles', 'as'=>'article']);
-Route::get('/article/{page}',  ['uses'=>'Admin\Core@getArticles', 'as'=>'article', 'middleware'=>'mymiddle']);
+Route::get('/articles',  ['uses'=>'Admin\Core@getArticles', 'as'=>'article', 'middleware'=>'mymiddle']);
+
+//Route::get('/article/{page}',  ['uses'=>'Admin\Core@getArticle', 'as'=>'article'])->middleware(['mymiddle']);
+
+Route::get('/article/{page}',  ['middleware'=>'mymiddle:admin', 'uses'=>'Admin\Core@getArticle', 'as'=>'article']);
+
+
+//Route::group(['middleware' => ['web']], function () {
+
+//});

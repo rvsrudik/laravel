@@ -7,9 +7,16 @@ use App\Http\Controllers\Controller;
 
 class Core extends Controller
 {
+
+    public function __construct()
+    {
+//        $this->middleware('mymiddle');
+    }
+
+
     //list articles
     public function getArticles() {
-
+        echo "123";
     }
 
     //material
