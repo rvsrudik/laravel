@@ -14,6 +14,6 @@ class Core extends Controller
 
     //material
     public function getArticle($id) {
-
+        echo $id;
     }
 }
