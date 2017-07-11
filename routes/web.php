@@ -149,3 +149,5 @@ Route::get('/article/{id}',  ['uses'=>'Admin\Core@getArticle', 'as'=>'article'])
 
 
 Route::get('/about',  ['uses'=>'Admin\AboutController@show', 'as'=>'about']);
+
+Route::match(['get', 'post'], '/contact/{id?}', ['uses'=>'Admin\ContactController@show', 'as'=>'contact']);

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>{{ $title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,8 +41,12 @@
     <![endif]-->
 </head>
 
+
+
+
 <body>
 
+@section('navbar')
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -49,10 +56,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo route('home'); ?>">Project name</a>
-            <a class="navbar-brand" href="<?php echo route('about'); ?>">About</a>
-            <a class="navbar-brand" href="<?php echo route('articles'); ?>">Articles</a>
-            <a class="navbar-brand" href="<?php echo route('article', array('id'=>10)); ?>">Article</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Project name</a>
+            <a class="navbar-brand" href="{{ route('about') }}">About</a>
+            <a class="navbar-brand" href="{{ route('articles') }}">Articles</a>
+            <a class="navbar-brand" href="{{ route('article', array('id'=>10)) }}">Article</a>
+            <a class="navbar-brand" href="{{ route('contact') }}">Contact</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right">
@@ -67,43 +75,34 @@
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
+@show
+
+
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
+@section('header')
 <div class="jumbotron">
     <div class="container">
-        <h1><?php echo $title; ?></h1>
-<!--        <h2>--><?php //echo $title2; ?><!--</h2>-->
+        <h1>{{ $title }}</h1>
+        <h2>{{ date('Y.M.d', time()) }}</h2>
 <!--        <h3>--><?php //echo $title3; ?><!--</h3>-->
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
 </div>
+@show
+
+
 
 <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-    </div>
-
+    @yield('content')
     <hr>
 
+    @section('footer')
     <footer>
         <p>&copy; 2016 Company, Inc.</p>
     </footer>
+    @show
 </div> <!-- /container -->
 
 
